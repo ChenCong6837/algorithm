@@ -13,28 +13,28 @@
  * @return {number}
  */
 
-var minDepth = function(root) {
-    if(!root){
+var minDepth = function (root) {
+    if (!root) {
         return 0
     }
     let queue = []
     queue.push(root)
     let deep = 1
-    while(queue.length > 0) {
+    while (queue.length > 0) {
         /** 这里广度优先，需要把当前层次的所有节点遍历 */
         let len = queue.length
-        while(len--) {
+        while (len--) {
             let current = queue.shift()
             let currentLeft = current.left
             let currentRight = current.right
             /** 左右子树都不存在，说明是叶子节点，则返回深度 */
-            if(!currentLeft && !currentRight) {
+            if (!currentLeft && !currentRight) {
                 return deep
             }
-            if(currentLeft) {
+            if (currentLeft) {
                 queue.push(currentLeft)
             }
-            if(currentRight) {
+            if (currentRight) {
                 queue.push(currentRight)
             }
         }

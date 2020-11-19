@@ -21,8 +21,8 @@
  * @return {number}
  */
 
- /** BFS图的广度优先 */
-var openLock = function(deadends, target) {
+/** BFS图的广度优先 */
+var openLock = function (deadends, target) {
     let queue = []
     let visited = new Set()
     /** 从起点开始启动广度优先搜索 */
@@ -30,28 +30,28 @@ var openLock = function(deadends, target) {
     visited.add('0000')
     let step = 0
 
-    while(queue.length > 0) {
+    while (queue.length > 0) {
         let currentLength = queue.length
         /* 将当前队列中的所有节点向周围扩散 */
-        while(currentLength--) {
+        while (currentLength--) {
             let current = queue.shift()
-             /** 需要跳过的死亡密码 */
-            if(deadends.indexOf(current) !== -1) {
+            /** 需要跳过的死亡密码 */
+            if (deadends.indexOf(current) !== -1) {
                 continue
             }
-            if(current === target) {
+            if (current === target) {
                 return step
             }
             /** 4个位置，每个位置的密码有两个方向： 向上一下，或向下一下 */
-            for(let i = 0; i < 4; i ++) {
+            for (let i = 0; i < 4; i++) {
                 let up = plusOne(current, i)
                 /** 将未遍历到的节点加入队列 */
-                if(!visited.has(up)) {
+                if (!visited.has(up)) {
                     queue.push(up)
                     visited.add(up)
                 }
                 let down = minusOne(current, i)
-                if(!visited.has(down)) {
+                if (!visited.has(down)) {
                     queue.push(down)
                     visited.add(down)
                 }
@@ -65,7 +65,7 @@ var openLock = function(deadends, target) {
 /** 再第j位置加1 */
 function plusOne(str, j) {
     let strToNumArr = str.split('').map(i => +i)
-    if(strToNumArr[j] === 9) {
+    if (strToNumArr[j] === 9) {
         strToNumArr[j] = 0
     } else {
         strToNumArr[j] += 1
@@ -75,7 +75,7 @@ function plusOne(str, j) {
 /** 再第j位置减1 */
 function minusOne(str, j) {
     let strToNumArr = str.split('').map(i => +i)
-    if(strToNumArr[j] === 0) {
+    if (strToNumArr[j] === 0) {
         strToNumArr[j] = 9
     } else {
         strToNumArr[j] -= 1
