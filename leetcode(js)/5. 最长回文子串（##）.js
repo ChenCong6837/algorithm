@@ -8,6 +8,8 @@
  * 输出: "bab"
  * 注意: "aba" 也是一个有效答案。
  *
+ * @param {string} s
+ * @return {string}
  */
 
 
